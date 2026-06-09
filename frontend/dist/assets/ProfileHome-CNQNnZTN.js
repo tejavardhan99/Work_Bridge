@@ -1,0 +1,1 @@
+import{v as o,t}from"./index-BWuwrj6o.js";import{u as l}from"./index-CnUMpCei.js";const p=()=>{const{userRole:r}=l(),e=o();return t.useEffect(()=>{r==="employer"?e("/profile/employer",{replace:!0}):r==="admin"?e("/profile",{replace:!0}):e("/profile/worker",{replace:!0})},[r,e]),null};export{p as default};

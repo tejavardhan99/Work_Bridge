@@ -1,0 +1,3 @@
+*** Begin Patch
+*** Delete File: d:/CSP_pro/apps/recommendations/services.py
+*** End Patch

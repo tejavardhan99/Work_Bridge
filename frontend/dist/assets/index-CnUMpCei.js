@@ -1,0 +1,1 @@
+import{u as t}from"./index-BWuwrj6o.js";const o=()=>{const e=t();return{user:e.user,isAuthenticated:e.isAuthenticated,userRole:e.userRole,login:e.login,logout:e.logout,updateUser:e.updateUser}};export{o as u};

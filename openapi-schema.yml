@@ -1,0 +1,2923 @@
+openapi: 3.0.3
+info:
+  title: WorkBridge API
+  version: 1.0.0
+  description: AI-powered location-based temporary job platform for rural workers.
+paths:
+  /api/v1/admin/analytics/:
+    get:
+      operationId: api_v1_admin_analytics_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/block-user/{user_id}/:
+    post:
+      operationId: api_v1_admin_block_user_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_admin_block_user_partial_update
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/complaints/:
+    get:
+      operationId: api_v1_admin_complaints_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    post:
+      operationId: api_v1_admin_complaints_create
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FraudReportRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/FraudReportRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/FraudReportRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/complaints/{complaint_id}/:
+    patch:
+      operationId: api_v1_admin_complaints_partial_update
+      parameters:
+      - in: path
+        name: complaint_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedComplaintStatusRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedComplaintStatusRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedComplaintStatusRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/dashboard/:
+    get:
+      operationId: api_v1_admin_dashboard_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/employers/:
+    get:
+      operationId: api_v1_admin_employers_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/fraud-monitoring/:
+    get:
+      operationId: api_v1_admin_fraud_monitoring_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/jobs/{job_id}/remove/:
+    delete:
+      operationId: api_v1_admin_jobs_remove_destroy
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/admin/ratings/:
+    get:
+      operationId: api_v1_admin_ratings_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/remove-job/{job_id}/:
+    delete:
+      operationId: api_v1_admin_remove_job_destroy
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/admin/users/:
+    get:
+      operationId: api_v1_admin_users_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/users/{user_id}/block/:
+    post:
+      operationId: api_v1_admin_users_block_create
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BlockUserRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_admin_users_block_partial_update
+      parameters:
+      - in: path
+        name: user_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBlockUserRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/admin/workers/:
+    get:
+      operationId: api_v1_admin_workers_retrieve
+      tags:
+      - Admin
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/auth/:
+    get:
+      operationId: api_v1_auth_retrieve
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthIndex'
+          description: ''
+  /api/v1/auth/admin-login/:
+    post:
+      operationId: api_v1_auth_admin_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/admin/login/:
+    post:
+      operationId: api_v1_auth_admin_login_create_2
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/demo-tokens/:
+    get:
+      operationId: api_v1_auth_demo_tokens_retrieve
+      tags:
+      - api
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DemoTokens'
+          description: ''
+  /api/v1/auth/employer-login/:
+    post:
+      operationId: api_v1_auth_employer_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/employer-register/:
+    post:
+      operationId: api_v1_auth_employer_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/v1/auth/employers/login/:
+    post:
+      operationId: api_v1_auth_employers_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/employers/register/:
+    post:
+      operationId: api_v1_auth_employers_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/v1/auth/otp/start/:
+    post:
+      operationId: api_v1_auth_otp_start_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPStartRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OTPStartRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OTPStartRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPStart'
+          description: ''
+  /api/v1/auth/otp/verify/:
+    post:
+      operationId: api_v1_auth_otp_verify_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/OTPVerifyRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OTPVerify'
+          description: ''
+  /api/v1/auth/refresh/:
+    post:
+      operationId: api_v1_auth_refresh_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refresh'
+          description: ''
+  /api/v1/auth/token/refresh/:
+    post:
+      operationId: api_v1_auth_token_refresh_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RefreshRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Refresh'
+          description: ''
+  /api/v1/auth/worker-login/:
+    post:
+      operationId: api_v1_auth_worker_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/worker-register/:
+    post:
+      operationId: api_v1_auth_worker_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/v1/auth/workers/login/:
+    post:
+      operationId: api_v1_auth_workers_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /api/v1/auth/workers/register/:
+    post:
+      operationId: api_v1_auth_workers_register_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+        required: true
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Register'
+          description: ''
+  /api/v1/employers/applications/{application_id}/complete/:
+    post:
+      operationId: api_v1_employers_applications_complete_create
+      parameters:
+      - in: path
+        name: application_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/applications/{application_id}/decision/:
+    post:
+      operationId: api_v1_employers_applications_decision_create
+      parameters:
+      - in: path
+        name: application_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationDecisionRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationDecisionRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationDecisionRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/applications/{application_id}/review/:
+    post:
+      operationId: api_v1_employers_applications_review_create
+      parameters:
+      - in: path
+        name: application_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ReviewRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/jobs/:
+    get:
+      operationId: api_v1_employers_jobs_retrieve
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    post:
+      operationId: api_v1_employers_jobs_create
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/jobs/{job_id}/:
+    patch:
+      operationId: api_v1_employers_jobs_partial_update
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    delete:
+      operationId: api_v1_employers_jobs_destroy
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/employers/jobs/{job_id}/applications/:
+    get:
+      operationId: api_v1_employers_jobs_applications_retrieve
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/jobs/{job_id}/recommended-workers/:
+    get:
+      operationId: api_v1_employers_jobs_recommended_workers_retrieve
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/me/:
+    get:
+      operationId: api_v1_employers_me_retrieve
+      tags:
+      - Employers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    put:
+      operationId: api_v1_employers_me_update
+      tags:
+      - Employers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_employers_me_partial_update
+      tags:
+      - Employers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/nearby-workers/:
+    get:
+      operationId: api_v1_employers_nearby_workers_retrieve
+      tags:
+      - Employers
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/profile/:
+    get:
+      operationId: api_v1_employers_profile_retrieve
+      tags:
+      - Employers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    put:
+      operationId: api_v1_employers_profile_update
+      tags:
+      - Employers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmployerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_employers_profile_partial_update
+      tags:
+      - Employers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmployerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/employers/workers/{worker_id}/trust-score/:
+    get:
+      operationId: api_v1_employers_workers_trust_score_retrieve
+      parameters:
+      - in: path
+        name: worker_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/health/:
+    get:
+      operationId: api_v1_health_retrieve
+      tags:
+      - System
+      security:
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthResponse'
+          description: ''
+  /api/v1/jobs/:
+    get:
+      operationId: api_v1_jobs_retrieve
+      parameters:
+      - in: query
+        name: district
+        schema:
+          type: string
+      - in: query
+        name: duration
+        schema:
+          type: string
+      - in: query
+        name: max_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: min_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: skill
+        schema:
+          type: string
+      - in: query
+        name: skills
+        schema:
+          type: string
+      - in: query
+        name: state
+        schema:
+          type: string
+      - in: query
+        name: urgency
+        schema:
+          enum:
+          - normal
+          - urgent
+          - emergency
+          type: string
+          minLength: 1
+        description: |-
+          * `normal` - normal
+          * `urgent` - urgent
+          * `emergency` - emergency
+      - in: query
+        name: village
+        schema:
+          type: string
+      - in: query
+        name: worker_level_required
+        schema:
+          enum:
+          - Beginner
+          - Intermediate
+          - Senior
+          type: string
+          minLength: 1
+        description: |-
+          * `Beginner` - Beginner
+          * `Intermediate` - Intermediate
+          * `Senior` - Senior
+      tags:
+      - Jobs
+      security:
+      - BearerAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/{job_id}/:
+    get:
+      operationId: api_v1_jobs_retrieve_2
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Jobs
+      security:
+      - BearerAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/accept/{application_id}/:
+    post:
+      operationId: api_v1_jobs_accept_create
+      parameters:
+      - in: path
+        name: application_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/applicants/{job_id}/:
+    get:
+      operationId: api_v1_jobs_applicants_retrieve
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/complete/{job_id}/:
+    post:
+      operationId: api_v1_jobs_complete_create
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/create/:
+    post:
+      operationId: api_v1_jobs_create_create
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/delete/{job_id}/:
+    delete:
+      operationId: api_v1_jobs_delete_destroy
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/jobs/filter/:
+    get:
+      operationId: api_v1_jobs_filter_retrieve
+      parameters:
+      - in: query
+        name: district
+        schema:
+          type: string
+      - in: query
+        name: duration
+        schema:
+          type: string
+      - in: query
+        name: max_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: min_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: skill
+        schema:
+          type: string
+      - in: query
+        name: skills
+        schema:
+          type: string
+      - in: query
+        name: state
+        schema:
+          type: string
+      - in: query
+        name: urgency
+        schema:
+          enum:
+          - normal
+          - urgent
+          - emergency
+          type: string
+          minLength: 1
+        description: |-
+          * `normal` - normal
+          * `urgent` - urgent
+          * `emergency` - emergency
+      - in: query
+        name: village
+        schema:
+          type: string
+      - in: query
+        name: worker_level_required
+        schema:
+          enum:
+          - Beginner
+          - Intermediate
+          - Senior
+          type: string
+          minLength: 1
+        description: |-
+          * `Beginner` - Beginner
+          * `Intermediate` - Intermediate
+          * `Senior` - Senior
+      tags:
+      - Jobs
+      security:
+      - BearerAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/my-jobs/:
+    get:
+      operationId: api_v1_jobs_my_jobs_retrieve
+      parameters:
+      - in: query
+        name: district
+        schema:
+          type: string
+      - in: query
+        name: duration
+        schema:
+          type: string
+      - in: query
+        name: max_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: min_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: skill
+        schema:
+          type: string
+      - in: query
+        name: skills
+        schema:
+          type: string
+      - in: query
+        name: state
+        schema:
+          type: string
+      - in: query
+        name: urgency
+        schema:
+          enum:
+          - normal
+          - urgent
+          - emergency
+          type: string
+          minLength: 1
+        description: |-
+          * `normal` - normal
+          * `urgent` - urgent
+          * `emergency` - emergency
+      - in: query
+        name: village
+        schema:
+          type: string
+      - in: query
+        name: worker_level_required
+        schema:
+          enum:
+          - Beginner
+          - Intermediate
+          - Senior
+          type: string
+          minLength: 1
+        description: |-
+          * `Beginner` - Beginner
+          * `Intermediate` - Intermediate
+          * `Senior` - Senior
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/nearby/:
+    get:
+      operationId: api_v1_jobs_nearby_retrieve
+      parameters:
+      - in: query
+        name: latitude
+        schema:
+          type: number
+          format: double
+        required: true
+      - in: query
+        name: longitude
+        schema:
+          type: number
+          format: double
+        required: true
+      - in: query
+        name: max_distance_km
+        schema:
+          type: number
+          format: double
+          minimum: 1
+          default: 50.0
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+      tags:
+      - Jobs
+      security:
+      - BearerAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/rate-worker/{worker_id}/:
+    post:
+      operationId: api_v1_jobs_rate_worker_create
+      parameters:
+      - in: path
+        name: worker_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerRatingRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkerRatingRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkerRatingRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/recommended-workers/:
+    get:
+      operationId: api_v1_jobs_recommended_workers_retrieve
+      parameters:
+      - in: query
+        name: job_id
+        schema:
+          type: string
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/reject/{application_id}/:
+    post:
+      operationId: api_v1_jobs_reject_create
+      parameters:
+      - in: path
+        name: application_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/search/:
+    get:
+      operationId: api_v1_jobs_search_retrieve
+      parameters:
+      - in: query
+        name: district
+        schema:
+          type: string
+      - in: query
+        name: duration
+        schema:
+          type: string
+      - in: query
+        name: max_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: min_salary
+        schema:
+          type: number
+          format: double
+          minimum: 0
+      - in: query
+        name: page
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - in: query
+        name: page_size
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+          default: 20
+      - in: query
+        name: search
+        schema:
+          type: string
+      - in: query
+        name: skill
+        schema:
+          type: string
+      - in: query
+        name: skills
+        schema:
+          type: string
+      - in: query
+        name: state
+        schema:
+          type: string
+      - in: query
+        name: urgency
+        schema:
+          enum:
+          - normal
+          - urgent
+          - emergency
+          type: string
+          minLength: 1
+        description: |-
+          * `normal` - normal
+          * `urgent` - urgent
+          * `emergency` - emergency
+      - in: query
+        name: village
+        schema:
+          type: string
+      - in: query
+        name: worker_level_required
+        schema:
+          enum:
+          - Beginner
+          - Intermediate
+          - Senior
+          type: string
+          minLength: 1
+        description: |-
+          * `Beginner` - Beginner
+          * `Intermediate` - Intermediate
+          * `Senior` - Senior
+      tags:
+      - Jobs
+      security:
+      - BearerAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/jobs/update/{job_id}/:
+    put:
+      operationId: api_v1_jobs_update_update
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JobRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_jobs_update_partial_update
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Employer Jobs
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJobRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/notifications/:
+    get:
+      operationId: api_v1_notifications_retrieve
+      tags:
+      - Notifications
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/notifications/{notification_id}/read/:
+    patch:
+      operationId: api_v1_notifications_read_partial_update
+      parameters:
+      - in: path
+        name: notification_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Notifications
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/recommendations/jobs/:
+    get:
+      operationId: api_v1_recommendations_jobs_retrieve
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/recommendations/jobs/for-worker/:
+    get:
+      operationId: api_v1_recommendations_jobs_for_worker_retrieve
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/recommendations/workers/:
+    get:
+      operationId: api_v1_recommendations_workers_retrieve
+      parameters:
+      - in: query
+        name: job_id
+        schema:
+          type: string
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/recommendations/workers/for-job/{job_id}/:
+    get:
+      operationId: api_v1_recommendations_workers_for_job_retrieve
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/applications/:
+    get:
+      operationId: api_v1_workers_applications_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/applied-jobs/:
+    get:
+      operationId: api_v1_workers_applied_jobs_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/apply-job/{job_id}/:
+    post:
+      operationId: api_v1_workers_apply_job_create
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/availability/:
+    post:
+      operationId: api_v1_workers_availability_create
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AvailabilityRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_workers_availability_partial_update
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAvailabilityRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAvailabilityRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAvailabilityRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/certificates/:
+    post:
+      operationId: api_v1_workers_certificates_create
+      tags:
+      - Workers
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CertificateUploadRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CertificateUploadRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/completed-jobs/:
+    get:
+      operationId: api_v1_workers_completed_jobs_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/jobs/{job_id}/apply/:
+    post:
+      operationId: api_v1_workers_jobs_apply_create
+      parameters:
+      - in: path
+        name: job_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/me/:
+    get:
+      operationId: api_v1_workers_me_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    put:
+      operationId: api_v1_workers_me_update
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_workers_me_partial_update
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/need-work-today/:
+    post:
+      operationId: api_v1_workers_need_work_today_create
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NeedWorkTodayRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NeedWorkTodayRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NeedWorkTodayRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/notifications/:
+    get:
+      operationId: api_v1_workers_notifications_retrieve
+      tags:
+      - Workers
+      - Notifications
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/profile/:
+    get:
+      operationId: api_v1_workers_profile_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    put:
+      operationId: api_v1_workers_profile_update
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+    patch:
+      operationId: api_v1_workers_profile_partial_update
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedWorkerProfileRequest'
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/ratings/:
+    get:
+      operationId: api_v1_workers_ratings_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/recommended-jobs/:
+    get:
+      operationId: api_v1_workers_recommended_jobs_retrieve
+      tags:
+      - Workers
+      - Recommendations
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/reviews/:
+    get:
+      operationId: api_v1_workers_reviews_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/skills/:
+    post:
+      operationId: api_v1_workers_skills_create
+      tags:
+      - Workers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkerSkillsRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/WorkerSkillsRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/WorkerSkillsRequest'
+        required: true
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+  /api/v1/workers/trust-score/:
+    get:
+      operationId: api_v1_workers_trust_score_retrieve
+      tags:
+      - Workers
+      security:
+      - BearerAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    ApplicationDecisionRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ApplicationDecisionStatusEnum'
+      required:
+      - status
+    ApplicationDecisionStatusEnum:
+      enum:
+      - accepted
+      - rejected
+      type: string
+      description: |-
+        * `accepted` - accepted
+        * `rejected` - rejected
+    ApplicationRequest:
+      type: object
+      properties:
+        cover_note:
+          type: string
+    AuthIndex:
+      type: object
+      properties:
+        worker_register:
+          type: string
+        worker_login:
+          type: string
+        employer_register:
+          type: string
+        employer_login:
+          type: string
+        admin_login:
+          type: string
+        refresh:
+          type: string
+        demo_tokens:
+          type: string
+        note:
+          type: string
+      required:
+      - admin_login
+      - demo_tokens
+      - employer_login
+      - employer_register
+      - note
+      - refresh
+      - worker_login
+      - worker_register
+    AvailabilityRequest:
+      type: object
+      properties:
+        availability:
+          type: boolean
+      required:
+      - availability
+    BlockUserRequest:
+      type: object
+      properties:
+        is_blocked:
+          type: boolean
+      required:
+      - is_blocked
+    CertificateUploadRequest:
+      type: object
+      properties:
+        certificates:
+          type: array
+          items:
+            type: string
+            format: binary
+    ChannelEnum:
+      enum:
+      - phone
+      - email
+      type: string
+      description: |-
+        * `phone` - phone
+        * `email` - email
+    ComplaintStatusStatusEnum:
+      enum:
+      - open
+      - reviewing
+      - resolved
+      - dismissed
+      type: string
+      description: |-
+        * `open` - open
+        * `reviewing` - reviewing
+        * `resolved` - resolved
+        * `dismissed` - dismissed
+    DemoTokens:
+      type: object
+      properties:
+        worker:
+          type: object
+          additionalProperties: {}
+        employer:
+          type: object
+          additionalProperties: {}
+        admin:
+          type: object
+          additionalProperties: {}
+      required:
+      - admin
+      - employer
+      - worker
+    EmployerProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        organization_name:
+          type: string
+          maxLength: 160
+        business_type:
+          type: string
+          maxLength: 120
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+    FraudReportRequest:
+      type: object
+      properties:
+        reason:
+          type: string
+          minLength: 1
+        details:
+          type: string
+        reported_user_id:
+          type: string
+        job_id:
+          type: string
+      required:
+      - reason
+    HealthResponse:
+      type: object
+      properties:
+        service:
+          type: string
+        status:
+          type: string
+        database:
+          type: object
+          additionalProperties: {}
+      required:
+      - database
+      - service
+      - status
+    JobRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 160
+        description:
+          type: string
+          minLength: 1
+        required_skills:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 80
+        salary:
+          type: number
+          format: double
+          minimum: 0
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+        duration:
+          type: string
+          minLength: 1
+          maxLength: 80
+        urgency:
+          allOf:
+          - $ref: '#/components/schemas/UrgencyEnum'
+          default: normal
+        worker_level_required:
+          allOf:
+          - $ref: '#/components/schemas/WorkerLevelRequiredEnum'
+          default: Beginner
+      required:
+      - description
+      - duration
+      - location
+      - required_skills
+      - salary
+      - title
+    LocationRequest:
+      type: object
+      properties:
+        address:
+          type: string
+        village:
+          type: string
+        district:
+          type: string
+        state:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+      required:
+      - latitude
+      - longitude
+    Login:
+      type: object
+      properties:
+        identifier:
+          type: string
+      required:
+      - identifier
+    LoginRequest:
+      type: object
+      properties:
+        identifier:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          writeOnly: true
+          minLength: 1
+      required:
+      - identifier
+      - password
+    NeedWorkTodayRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          default: true
+    OTPStart:
+      type: object
+      properties:
+        identifier:
+          type: string
+        channel:
+          $ref: '#/components/schemas/ChannelEnum'
+      required:
+      - channel
+      - identifier
+    OTPStartRequest:
+      type: object
+      properties:
+        identifier:
+          type: string
+          minLength: 1
+        channel:
+          $ref: '#/components/schemas/ChannelEnum'
+      required:
+      - channel
+      - identifier
+    OTPVerify:
+      type: object
+      properties:
+        identifier:
+          type: string
+        otp:
+          type: string
+          maxLength: 8
+      required:
+      - identifier
+      - otp
+    OTPVerifyRequest:
+      type: object
+      properties:
+        identifier:
+          type: string
+          minLength: 1
+        otp:
+          type: string
+          minLength: 1
+          maxLength: 8
+      required:
+      - identifier
+      - otp
+    PatchedAvailabilityRequest:
+      type: object
+      properties:
+        availability:
+          type: boolean
+    PatchedBlockUserRequest:
+      type: object
+      properties:
+        is_blocked:
+          type: boolean
+    PatchedComplaintStatusRequest:
+      type: object
+      properties:
+        status:
+          $ref: '#/components/schemas/ComplaintStatusStatusEnum'
+    PatchedEmployerProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        organization_name:
+          type: string
+          maxLength: 160
+        business_type:
+          type: string
+          maxLength: 120
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+    PatchedJobRequest:
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 160
+        description:
+          type: string
+          minLength: 1
+        required_skills:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 80
+        salary:
+          type: number
+          format: double
+          minimum: 0
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+        duration:
+          type: string
+          minLength: 1
+          maxLength: 80
+        urgency:
+          allOf:
+          - $ref: '#/components/schemas/UrgencyEnum'
+          default: normal
+        worker_level_required:
+          allOf:
+          - $ref: '#/components/schemas/WorkerLevelRequiredEnum'
+          default: Beginner
+    PatchedWorkerProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+        skills:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 80
+        languages:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 50
+        availability:
+          type: boolean
+        experience:
+          type: string
+        profile_image:
+          type: string
+          format: binary
+        certificates:
+          type: array
+          items:
+            type: string
+            format: binary
+    Refresh:
+      type: object
+      properties:
+        refresh:
+          type: string
+      required:
+      - refresh
+    RefreshRequest:
+      type: object
+      properties:
+        refresh:
+          type: string
+          minLength: 1
+      required:
+      - refresh
+    Register:
+      type: object
+      properties:
+        name:
+          type: string
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+      required:
+      - name
+    RegisterRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+          minLength: 8
+      required:
+      - name
+      - password
+    ReviewRequest:
+      type: object
+      properties:
+        rating:
+          type: integer
+          maximum: 5
+          minimum: 1
+        comment:
+          type: string
+      required:
+      - rating
+    UrgencyEnum:
+      enum:
+      - normal
+      - urgent
+      - emergency
+      type: string
+      description: |-
+        * `normal` - normal
+        * `urgent` - urgent
+        * `emergency` - emergency
+    WorkerLevelRequiredEnum:
+      enum:
+      - Beginner
+      - Intermediate
+      - Senior
+      type: string
+      description: |-
+        * `Beginner` - Beginner
+        * `Intermediate` - Intermediate
+        * `Senior` - Senior
+    WorkerProfileRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 120
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        location:
+          $ref: '#/components/schemas/LocationRequest'
+        skills:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 80
+        languages:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 50
+        availability:
+          type: boolean
+        experience:
+          type: string
+        profile_image:
+          type: string
+          format: binary
+        certificates:
+          type: array
+          items:
+            type: string
+            format: binary
+    WorkerRatingRequest:
+      type: object
+      properties:
+        job_id:
+          type: string
+          minLength: 1
+        rating:
+          type: integer
+          maximum: 5
+          minimum: 1
+        comment:
+          type: string
+      required:
+      - job_id
+      - rating
+    WorkerSkillsRequest:
+      type: object
+      properties:
+        skills:
+          type: array
+          items:
+            type: string
+            minLength: 1
+            maxLength: 80
+      required:
+      - skills
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
