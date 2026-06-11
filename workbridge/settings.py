@@ -14,6 +14,10 @@ ALLOWED_HOSTS = [
     host.strip()
     for host in (os.getenv("DJANGO_ALLOWED_HOSTS") or os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1")).split(",")
     if host.strip()
+] + [
+    "work-bridge-4wnp.onrender.com",
+    "localhost",
+    "127.0.0.1",
 ]
 
 INSTALLED_APPS = [
@@ -95,7 +99,14 @@ JWT_ALGORITHM = "HS256"
 JWT_ACCESS_TOKEN_LIFETIME = timedelta(minutes=int(os.getenv("JWT_ACCESS_TOKEN_MINUTES", "60")))
 JWT_REFRESH_TOKEN_LIFETIME = timedelta(days=int(os.getenv("JWT_REFRESH_TOKEN_DAYS", "7")))
 
-CORS_ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv("CORS_ALLOWED_ORIGINS", "http://localhost:4200,http://localhost:3000,http://127.0.0.1:3000").split(",") if origin.strip()]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://work-bridge-chi.vercel.app",
+    "https://work-bridge-git-main-tejavardhan99s-projects.vercel.app",
+    "https://work-bridge-lunws18of-tejavardhan99s-projects.vercel.app",
+]
 CORS_ALLOW_CREDENTIALS = True
 
 MEDIA_URL = os.getenv("MEDIA_URL", "/media/")
@@ -104,3 +115,5 @@ MEDIA_ROOT = BASE_DIR / os.getenv("MEDIA_ROOT", "media")
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
+
+
