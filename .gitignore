@@ -21,6 +21,7 @@ staticfiles/
 server.out.log
 server.err.log
 mongo*.log
+firebase-key.json
 
 .pytest_cache/
 .coverage

@@ -21,17 +21,27 @@ ALLOWED_LOCATIONS = {'Duvvada', 'Gajuwaka'}
 def get_location_label(location):
     if not location:
         return None
-    label = (
-        getattr(location, 'address', None)
-        or getattr(location, 'village', None)
-        or getattr(location, 'district', None)
-        or getattr(location, 'state', None)
-    )
-    if label:
-        label = label.strip()
-        if label in ALLOWED_LOCATIONS:
-            return label
-    return None
+
+    label = None
+    if isinstance(location, str):
+        label = location.strip()
+    elif isinstance(location, dict):
+        label = (
+            (location.get('address') or '')
+            or (location.get('village') or '')
+            or (location.get('district') or '')
+            or (location.get('state') or '')
+        ).strip()
+    else:
+        label = (
+            getattr(location, 'address', None)
+            or getattr(location, 'village', None)
+            or getattr(location, 'district', None)
+            or getattr(location, 'state', None)
+        )
+        label = label.strip() if label else None
+
+    return label if label in ALLOWED_LOCATIONS else None
 
 
 def serialize_registration(user, worker_profiles, employer_profiles):
@@ -192,12 +202,6 @@ class DashboardAnalyticsView(APIView):
                 label = get_location_label(location)
                 if label:
                     job_location_counts[label] = job_location_counts.get(label, 0) + 1
-                elif location is not None:
-                    job.location = None
-                    try:
-                        job.save()
-                    except Exception:
-                        pass
 
             # Recent registrations
             worker_profiles = {str(w.user.id): w for w in WorkerProfile.objects() if getattr(w, 'user', None)}
@@ -230,7 +234,7 @@ class DashboardAnalyticsView(APIView):
                 for skill, count in sorted(skill_counts.items(), key=lambda item: item[1], reverse=True)[:10]
             ]
 
-            active_jobs = max(0, jobs_total - applications_completed)
+            active_jobs = jobs_open
 
             print("Workers:", workers_count)
             print("Employers:", employers_count)

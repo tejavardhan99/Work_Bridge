@@ -1,0 +1,1 @@
+import{v as a,t as o}from"./index-Dk2II29L.js";import{u as s}from"./index-CAS1Xp8v.js";const l=()=>{const{userRole:r}=s(),e=a();return o.useEffect(()=>{r==="employer"?e("/dashboard/employer",{replace:!0}):r==="admin"?e("/admin-dashboard",{replace:!0}):e("/dashboard/worker",{replace:!0})},[r,e]),null};export{l as default};
