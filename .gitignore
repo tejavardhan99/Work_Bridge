@@ -31,3 +31,10 @@ htmlcov/
 .vscode/
 *.swp
 
+node_modules/
+frontend/node_modules/
+
+dist/
+frontend/dist/
+
+npm-debug.log*
