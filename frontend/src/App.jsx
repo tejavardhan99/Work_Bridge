@@ -6,8 +6,7 @@ import './App.css'
 
 function App() {
   const { darkMode, setDarkMode, fetchNotifications } = useUIStore()
-  const { isAuthenticated } = useAuthStore()
-
+  const { isAuthenticated } = useAuthStore();
   useEffect(() => {
     // Apply saved theme on app load
     if (darkMode) {
